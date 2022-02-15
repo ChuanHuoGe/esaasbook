@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -36,18 +38,22 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'simplecov', "~> 0.17.0" , :require => false
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner' # required by Cucumber
   gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-rubocop', require: false
+  gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'simplecov', '~> 0.17.0', require: false
 end
 
 group :production do
@@ -55,4 +61,4 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
